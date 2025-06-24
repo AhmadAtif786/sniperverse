@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import sniperlogo from '../assets/sniperverse.png'
+import sniperlogo from '../assets/logo.png';
 import Image from "next/image";
 
 export default function Header() {
@@ -16,30 +16,51 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex justify-between items-center px-6 py-4 border-b border-gray-800 relative z-50 bg-black">
-        <div className="flex items-center space-x-2">
-          <Image width={120} height={100} src={sniperlogo} alt="Lens Logo" className="w-6 h-6" />
-          <span className="font-bold text-white">SnipersVerse</span>
+      <header className="flex justify-between items-center px-6 pb-4  border-gray-800 relative z-50 bg-[#0a0a12]">
+        <div className="flex items-center space-x-3">
+          <Image 
+            width={140} 
+            height={50} 
+            src={sniperlogo} 
+            alt="SnipersVerse Logo" 
+            className="w-30 h-30 rounded-lg border "
+          />
+        
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-6 text-sm">
-          <a href="#" className="hover:underline">Home</a>
-          <a href="#" className="hover:underline">Vision</a>
-          <a href="#" className="hover:underline">Roadmap</a>
-          <a href="#" className="hover:underline">Pricing</a>
-          <a href="#" className="hover:underline">Join</a>
+        <nav className="hidden md:flex space-x-8 text-sm">
+          {['Home', 'Vision', 'Roadmap', 'Pricing', 'Join'].map((item, i) => (
+            <motion.a 
+              key={i}
+              href="#" 
+              className="text-blue-200 hover:text-white transition-colors relative group"
+              whileHover={{ scale: 1.05 }}
+            >
+              {item}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
+            </motion.a>
+          ))}
         </nav>
 
         {/* Desktop Button */}
-        <button className="hidden md:block px-4 py-1 bg-white text-black rounded-full text-sm font-bold">
+        <motion.button 
+          className="hidden md:block px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-sm font-bold shadow-lg hover:shadow-blue-500/30 transition-all"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           Launch Bot
-        </button>
+        </motion.button>
 
         {/* Mobile Menu Button */}
-        <button onClick={() => setIsMobileMenuOpen(true)} className="md:hidden text-white text-xl">
+        <motion.button 
+          onClick={() => setIsMobileMenuOpen(true)} 
+          className="md:hidden text-white text-2xl"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
           ☰
-        </button>
+        </motion.button>
       </header>
 
       {/* Mobile Sidebar */}
@@ -48,7 +69,7 @@ export default function Header() {
           <>
             {/* Overlay */}
             <motion.div
-              className="fixed inset-0 bg-black bg-opacity-50 z-40"
+              className="fixed inset-0 bg-black bg-opacity-70 z-40 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -57,26 +78,57 @@ export default function Header() {
 
             {/* Sidebar */}
             <motion.aside
-              className="fixed top-0 right-0 w-64 h-full bg-gray-900 z-50 shadow-lg p-6 flex flex-col space-y-4"
+              className="fixed top-0 right-0 w-72 h-full bg-[#0a0a18] z-50 shadow-2xl p-6 flex flex-col space-y-6 border-l border-blue-900/50"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "tween" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="self-end text-gray-400 text-xl"
+              <div className="flex justify-between items-center mb-8">
+                <div className="flex items-center space-x-3">
+                  <Image 
+                    width={32} 
+                    height={32} 
+                    src={sniperlogo} 
+                    alt="SnipersVerse Logo" 
+                    className="w-7 h-7 rounded-lg border border-blue-500/30"
+                  />
+                  <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300">
+                    SnipersVerse
+                  </span>
+                </div>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-400 hover:text-white text-2xl transition-colors"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="flex flex-col space-y-4">
+                {['Home', 'Vision', 'Roadmap', 'Pricing', 'Join'].map((label, i) => (
+                  <motion.a
+                    key={i}
+                    href="#"
+                    className="text-blue-200 hover:text-white py-2 px-3 rounded-lg hover:bg-blue-900/20 transition-colors border-b border-blue-900/30"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    initial={{ x: 20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 * i }}
+                  >
+                    {label}
+                  </motion.a>
+                ))}
+              </div>
+
+              <motion.a 
+                href="https://t.me/SnipersVerseBot?start=start" 
+                className="mt-8 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-5 py-3 rounded-full font-bold text-center shadow-lg hover:shadow-blue-500/30 transition-all"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
-                ×
-              </button>
-              {["Home", "Vision", "Roadmap", "Pricing", "Join"].map((label, i) => (
-                <a key={i} href="#" className="text-white text-sm" onClick={() => setIsMobileMenuOpen(false)}>
-                  {label}
-                </a>
-              ))}
-              <a href="https://t.me/SnipersVerseBot?start=start" className="mt-4 bg-white text-black px-4 py-2 rounded-full text-sm font-bold text-center">
                 Launch Bot
-              </a>
+              </motion.a>
             </motion.aside>
           </>
         )}
