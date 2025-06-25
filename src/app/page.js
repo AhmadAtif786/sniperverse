@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 // Remove the dynamic import or handle it differently
 import Header from '@/components/header'
+import Footer from '@/components/footer';
 
 export default function HomePage() {
   // const Header = dynamic(() => import('@/components/header'), { ssr: false });
@@ -23,7 +24,6 @@ export default function HomePage() {
 
       <main className="bg-[#0a0a12] text-white font-['Sora']">
 
-        <Header />
 
         {/* Hero Section */}
         <section className="text-center px-6 py-16 bg-gradient-to-b from-[#0a0a12] to-[#0f172a] relative overflow-hidden">
@@ -406,25 +406,7 @@ export default function HomePage() {
         </section>
 
         {/* Footer */}
-        <footer className="text-center text-xs text-gray-500 py-8 border-t border-gray-800 mt-16 bg-[#0a0a12]">
-          <div className="mb-2">
-            <a href="#" className="mx-2 hover:text-white transition-colors">Home</a>
-            <a href="#" className="mx-2 hover:text-white transition-colors">Vision</a>
-            <a href="#" className="mx-2 hover:text-white transition-colors">Roadmap</a>
-            <a href="#" className="mx-2 hover:text-white transition-colors">Pricing</a>
-            <a href="#" className="mx-2 hover:text-white transition-colors">Join</a>
-          </div>
-          <div className="mb-2">
-            <a href="#" className="mx-2 hover:text-white transition-colors">Twitter</a>
-            <a href="#" className="mx-2 hover:text-white transition-colors">Telegram</a>
-            <a href="#" className="mx-2 hover:text-white transition-colors">Discord</a>
-            <a href="#" className="mx-2 hover:text-white transition-colors">Mirror</a>
-          </div>
-          <div className="mb-2">Contact: support@snipersverse.com</div>
-          <div className="mb-2">Disclaimer: Use at your own risk. Not financial advice.</div>
-          <div>© 2025 SnipersVerse – All rights reserved</div>
-        </footer>
-
+        <Footer />
         {/* Add this to your global CSS */}
         <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
