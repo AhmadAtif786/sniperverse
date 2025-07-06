@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import sniperlogo from '../assets/logo.png';
+import sniperlogo from '../../public/logo.png';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,15 +19,15 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex justify-between items-center px-6 pb-4 border-gray-800 relative z-50 bg-[#0a0a12]">
-        <div className="flex items-center space-x-3">
+      <header className="flex justify-between items-center px-6 pb-4 border-gray-800 relative z-50  ">
+        <div className="flex items-center space-x-3 mt-2">
           <Link href="/">
             <Image
-              width={140}
-              height={80}
+              width={148}
+              height={75}
               src={sniperlogo}
               alt="SnipersVerse Logo"
-              className="w-50 h-40 rounded-lg border cursor-pointer"
+              className="rounded-lg border cursor-pointer"
             />
           </Link>
         </div>
@@ -38,7 +38,7 @@ export default function Header() {
             <motion.div key={i} whileHover={{ scale: 1.05 }}>
               <Link
                 href={href}
-                className="text-blue-200 hover:text-white transition-colors relative group"
+                className="text-white transition-colors relative group"
               >
                 {label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
@@ -48,14 +48,12 @@ export default function Header() {
         </nav>
 
         {/* Desktop Button */}
-        <motion.a
-          href="https://t.me/SnipersVerseBot?start=start"
-          className="hidden md:block px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-sm font-bold shadow-lg hover:shadow-blue-500/30 transition-all"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Launch Bot
-        </motion.a>
+        <a
+                href="https://t.me/SnipersVerseBot?start=start"
+                className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition transform rotate-[0.1deg]"
+              >
+                Coming soon
+              </a>
 
         {/* Mobile Menu Button */}
         <motion.button
@@ -90,15 +88,13 @@ export default function Header() {
               <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center space-x-3">
                   <Image
-                    width={32}
-                    height={32}
+                    width={102}
+                    height={52}
                     src={sniperlogo}
                     alt="SnipersVerse Logo"
-                    className="w-7 h-7 rounded-lg border border-blue-500/30"
                   />
-                  <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300">
-                    SnipersVerse
-                  </span>
+              
+                  
                 </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -127,14 +123,12 @@ export default function Header() {
                 ))}
               </div>
 
-              <motion.a
+            <a
                 href="https://t.me/SnipersVerseBot?start=start"
-                className="mt-8 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-5 py-3 rounded-full font-bold text-center shadow-lg hover:shadow-blue-500/30 transition-all"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+                className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition transform rotate-[0.1deg]"
               >
-                Launch Bot
-              </motion.a>
+                🚀 Launch SnipersVerse Bot
+              </a>
             </motion.aside>
           </>
         )}
