@@ -2,13 +2,30 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FiCheck, FiChevronDown, FiZap, FiDollarSign, FiGift, FiUsers } from 'react-icons/fi';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function PricingPage() {
   const [activeFaq, setActiveFaq] = useState(null);
+  const { isAuthenticated } = useAuth();
+  const router = useRouter();
 
   const toggleFaq = (index) => {
     setActiveFaq(activeFaq === index ? null : index);
+  };
+
+  const handlePlanSelect = (planName, price) => {
+    if (!isAuthenticated) {
+      router.push('/login');
+      return;
+    }
+    
+    if (planName === 'Free') {
+      return;
+    }
+    
+    router.push(`/checkout?plan=${encodeURIComponent(planName)}&price=${encodeURIComponent(price)}`);
   };
 
   return (
@@ -141,12 +158,12 @@ export default function PricingPage() {
                 ))}
               </ul>
               
-              <a
-                href="#"
+              <button
+                onClick={() => handlePlanSelect(tier.name, tier.price)}
                 className={`${tier.buttonColor} text-white px-4 py-3 rounded-lg font-bold w-full block text-center transition-colors`}
               >
                 {tier.button}
-              </a>
+              </button>
             </motion.div>
           ))}
         </div>
@@ -290,14 +307,14 @@ export default function PricingPage() {
             >
               ⚡ Launch Bot
             </motion.a>
-            <motion.a
-              href="/upgrade"
+            <motion.button
+              onClick={() => handlePlanSelect('Pro', '£19.99')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               className="px-6 py-3 rounded-full font-bold bg-gradient-to-r from-yellow-400 to-amber-500 text-black hover:shadow-lg hover:shadow-yellow-500/30 transition-all"
             >
               💸 Upgrade Now
-            </motion.a>
+            </motion.button>
             <motion.a
               href="/reserve"
               whileHover={{ scale: 1.05 }}
@@ -319,12 +336,12 @@ export default function PricingPage() {
           >
             <FiZap className="mr-1" /> Launch
           </a>
-          <a 
-            href="/upgrade" 
+          <button 
+            onClick={() => handlePlanSelect('Pro', '£19.99')}
             className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold"
           >
             Upgrade
-          </a>
+          </button>
         </div>
       </div>
 
