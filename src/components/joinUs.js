@@ -8,14 +8,15 @@ export default function JoinCommunity() {
     <section className="bg-[#0A0F2C] text-white py-20 px-4">
       <div className="max-w-4xl mx-auto text-center relative">
         {/* Glowing globe illustration */}
-        <div className="flex justify-center " >
+        <div className="flex justify-center "  
+            style={{marginBottom:'-250px'}}
+        >
           <Image
             src="/globe.png" // Replace with your animation or image
             alt="Globe"
             width={695}
             height={614}
             className="animate-pulse z-2"
-            style={{marginBottom:'-250px'}}
           />
         </div>
 

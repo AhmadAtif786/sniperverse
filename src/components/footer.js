@@ -28,7 +28,7 @@ const Footer = () => {
           <div className="flex flex-wrap justify-center gap-4 text-white text-sm">
             <a href="#" className="hover:text-[#00ffad] transition">Home</a>
             <a href="#" className="hover:text-[#00ffad] transition">How it works</a>
-            <a href="#" className="hover:text-[#00ffad] transition">F.A.Q.s</a>
+            <Link href="/faq" className="hover:text-[#00ffad] transition">FAQ</Link>
             <a href="#" className="hover:text-[#00ffad] transition">Pricing</a>
             <a href="#" className="hover:text-[#00ffad] transition">Community</a>
           </div>
