@@ -29,7 +29,6 @@ export default function RootLayout({ children }) {
       >
         <ReduxProvider>
           <AuthProvider>
-            <Header />
             {children}
             <ToastContainer
               position="top-right"
