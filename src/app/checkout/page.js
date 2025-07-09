@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +15,7 @@ import { toast } from 'react-toastify';
 import { createSubscription, confirmPayment, clearPaymentState, clearError } from '@/store/slices/paymentSlice';
 import { Connection, Transaction, clusterApiUrl } from '@solana/web3.js';
 
-export default function CheckoutPage() {
+function CheckoutPageContent() {
   const PaymentKey = process.env.NEXT_PUBLIC_PAYMENT_KEY;
   const [selectedWallet, setSelectedWallet] = useState(null);
   const [isConnecting, setIsConnecting] = useState(false);
@@ -486,5 +486,20 @@ export default function CheckoutPage() {
         </section>
       </main>
     </ProtectedRoute>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={
+      <div className="bg-[#0a0a12] text-white font-['Sora'] min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-blue-200">Loading checkout...</p>
+        </div>
+      </div>
+    }>
+      <CheckoutPageContent />
+    </Suspense>
   );
 } 
