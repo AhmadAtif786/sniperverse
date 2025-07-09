@@ -34,8 +34,8 @@ leadingTrim: 'NONE',
 color:'#FFEDEDCC'
 
 }}>
-Fames aliquet sit diam curabitur curabitur porttitor. Adipiscing quisque purus consectetur  quam neque porttitor feugiat lectus. Commodo pulvinar diam amet tortor turpis vivamus. At mauris tellus vulputate neque ut condimentum sapien.
-          </p>
+Join a growing squad of alpha hunters, devs, and degen snipers.
+Share strategies, flex your Finicons, and get early access to new features—all in real time on Telegram and Discord.        </p>
 
           <p className="text-sm text-green-300 mt-3 mb-10">
             If you love memes, crypto and GemCoins, then join our vibrant communities.
