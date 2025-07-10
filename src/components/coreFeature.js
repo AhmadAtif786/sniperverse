@@ -3,6 +3,7 @@
 import Image from 'next/image';
 
 export default function CoreFeatures() {
+    const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
     const features = [
         {
             title: "Auto Buy",
@@ -74,7 +75,7 @@ export default function CoreFeatures() {
 
             <div className="text-center mt-10">
                 <a
-                    href="https://t.me/SnipersVerseBot?start=start"
+                    href={TELEGRAM_BOT_URL}
                     className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition transform rotate-[0.1deg]"
                 >
                     🚀 Launch SnipersVerse Bot

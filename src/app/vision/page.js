@@ -24,6 +24,7 @@ function Section({ children }) {
 }
 
 export default function VisionPage() {
+  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
   return (
     <main className="bg-[#0a0a12] text-white font-['Sora']">
       {/* Hero Section */}
@@ -51,7 +52,7 @@ export default function VisionPage() {
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4">
               <motion.a
-                href="https://t.me/SnipersVerseBot?start=start"
+                href={TELEGRAM_BOT_URL}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-3 rounded-full font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all"
@@ -243,7 +244,7 @@ export default function VisionPage() {
           </p>
           <div className="flex flex-col md:flex-row justify-center gap-4">
             <motion.a
-              href="https://t.me/SnipersVerseBot?start=start"
+              href={TELEGRAM_BOT_URL}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               className="px-6 py-3 rounded-full font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all"

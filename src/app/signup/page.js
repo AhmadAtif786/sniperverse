@@ -21,7 +21,7 @@ export default function SignupPage() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { loading, error, isAuthenticated } = useSelector((state) => state.auth);
-
+  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
   useEffect(() => {
     if (isAuthenticated) {
       router.push('/');
@@ -198,7 +198,7 @@ export default function SignupPage() {
               <div className="text-center">
                 <p className="text-sm text-gray-400 mb-4">Quick Access</p>
                 <motion.a
-                  href="https://t.me/SnipersVerseBot?start=start"
+                  href={TELEGRAM_BOT_URL}
                   className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:shadow-lg hover:shadow-blue-500/30 transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

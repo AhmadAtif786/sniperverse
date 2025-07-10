@@ -6,7 +6,7 @@ import { FiZap, FiDollarSign, FiGift, FiUsers, FiCheck, FiLock, FiTool } from 'r
 
 export default function RoadmapPage() {
   const [expandedPhase, setExpandedPhase] = useState(0);
-
+  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
   const togglePhase = (index) => {
     setExpandedPhase(expandedPhase === index ? -1 : index);
   };
@@ -60,7 +60,7 @@ export default function RoadmapPage() {
                 "First leaderboards in Discord"
               ],
               ctas: [
-                { text: "⚡ Launch the Bot", link: "https://t.me/SnipersVerseBot?start=start", color: "from-blue-500 to-purple-600" },
+                { text: "⚡ Launch the Bot", link: TELEGRAM_BOT_URL, color: "from-blue-500 to-purple-600" },
                 { text: "💸 Upgrade to Pro", link: "/pricing", color: "from-yellow-400 to-amber-500 text-black" },
                 { text: "🐉 Reserve My Finicon", link: "/reserve", color: "from-white to-gray-300 text-black" }
               ],
@@ -238,7 +238,7 @@ export default function RoadmapPage() {
           </p>
           <div className="flex flex-col md:flex-row justify-center gap-4">
             <motion.a
-              href="https://t.me/SnipersVerseBot?start=start"
+              href={TELEGRAM_BOT_URL}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               className="px-6 py-3 rounded-full font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all"
@@ -289,7 +289,7 @@ export default function RoadmapPage() {
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0a0a18] border-t border-blue-900/50 p-3 shadow-lg z-50">
         <div className="flex justify-between items-center">
           <a 
-            href="https://t.me/SnipersVerseBot?start=start" 
+            href={TELEGRAM_BOT_URL} 
             className="text-sm text-blue-300 flex items-center"
           >
             <FiZap className="mr-1" /> Launch

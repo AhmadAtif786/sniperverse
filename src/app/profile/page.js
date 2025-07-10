@@ -15,7 +15,7 @@ export default function ProfilePage() {
   const { loading, error, subscription } = useSelector((state) => state.auth);
   const [isEditingTelegram, setIsEditingTelegram] = useState(false);
   const [telegramHandle, setTelegramHandle] = useState(user?.telegramHandle || '');
-
+  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
   const handleTelegramEdit = async () => {
     if (!isEditingTelegram) {
       setIsEditingTelegram(true);
@@ -239,7 +239,7 @@ export default function ProfilePage() {
               
               <div className="grid md:grid-cols-3 gap-4">
                 <motion.a
-                  href="https://t.me/SnipersVerseBot?start=start"
+                  href={TELEGRAM_BOT_URL}
                   className="p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg text-center font-bold hover:shadow-lg hover:shadow-blue-500/30 transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

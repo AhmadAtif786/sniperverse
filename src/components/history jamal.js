@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export default function HomePage() {
   const Header = dynamic(() => import('@/components/header'), { ssr: false });
-
+  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
   return (
     <main className="bg-black text-white font-sans">
       <Header />
@@ -43,7 +43,7 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row justify-center gap-4">
             {[
               {
-                href: 'https://t.me/SnipersVerseBot?start=start',
+                href: TELEGRAM_BOT_URL,
                 text: '⚡ Launch SnipersVerse Bot',
                 bg: 'bg-green-500',
               },
@@ -110,7 +110,7 @@ export default function HomePage() {
         </div>
         <div className="mt-12">
           <a
-            href="https://t.me/SnipersVerseBot?start=start"
+            href={TELEGRAM_BOT_URL}
             className="inline-block bg-green-500 text-black px-6 py-3 rounded-full text-sm font-bold hover:scale-105 transition"
           >
             💬 Launch Bot Now — Start Sniping
@@ -323,7 +323,7 @@ export default function HomePage() {
           <p>✅ Weekly trait drops for top referrers</p>
         </div>
         <div className="mt-10 flex flex-col md:flex-row justify-center gap-4">
-          <a href="https://t.me/SnipersVerseBot?start=invite" className="bg-green-500 text-black px-6 py-3 rounded-full text-sm font-bold hover:scale-105 transition">
+          <a href={TELEGRAM_BOT_URL} className="bg-green-500 text-black px-6 py-3 rounded-full text-sm font-bold hover:scale-105 transition">
             📣 Get My Invite Link
           </a>
           <a href="#" className="bg-gray-800 text-white px-6 py-3 rounded-full text-sm font-bold hover:scale-105 transition">
@@ -367,7 +367,7 @@ export default function HomePage() {
           Evolve your Finicon. Climb the ranks.
         </p>
         <div className="flex flex-col md:flex-row justify-center gap-4">
-          <a href="https://t.me/SnipersVerseBot?start=start" className="bg-green-500 text-black px-6 py-3 rounded-full text-sm font-bold hover:scale-105 transition">
+          <a href={TELEGRAM_BOT_URL} className="bg-green-500 text-black px-6 py-3 rounded-full text-sm font-bold hover:scale-105 transition">
             ⚡ Launch the Bot
           </a>
           <a href="/reserve" className="bg-white text-black px-6 py-3 rounded-full text-sm font-bold hover:scale-105 transition">
