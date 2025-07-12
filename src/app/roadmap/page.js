@@ -1,8 +1,9 @@
 // pages/roadmap.tsx
+'use client'
 import EcosystemSection from '@/components/EcoSystemSection'
 import Header from '@/components/header'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function RoadmapPage() {
   const [expandedPhase, setExpandedPhase] = useState(0);
