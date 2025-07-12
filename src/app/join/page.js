@@ -5,7 +5,9 @@ import { useState } from 'react';
 import { FiZap, FiMail, FiUsers } from 'react-icons/fi';
 import { FaDiscord } from 'react-icons/fa';
 
+
 export default function JoinPage() {
+  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
   const [email, setEmail] = useState('');
   const [showEmailForm, setShowEmailForm] = useState(false);
 
@@ -42,7 +44,7 @@ export default function JoinPage() {
             
             <div className="flex flex-col md:flex-row justify-center gap-4">
               <motion.a
-                href="https://t.me/SnipersVerseBot?start=start"
+                href={TELEGRAM_BOT_URL}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-3 rounded-full font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all"
@@ -96,7 +98,7 @@ export default function JoinPage() {
                 </li>
               </ul>
               <motion.a
-                href="https://t.me/SnipersVerseBot?start=start"
+                href={TELEGRAM_BOT_URL}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-block px-6 py-3 rounded-full font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all"
@@ -263,7 +265,7 @@ export default function JoinPage() {
           </div>
           <div className="flex gap-2">
             <a 
-              href="https://t.me/SnipersVerseBot?start=start" 
+              href={TELEGRAM_BOT_URL} 
               className="bg-blue-500/80 text-white px-3 py-1 rounded-full text-xs font-bold"
             >
               Start Free

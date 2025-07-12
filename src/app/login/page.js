@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { login, clearError } from '@/store/slices/authSlice';
 
 export default function LoginPage() {
+  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
   const [formData, setFormData] = useState({
     usernameOrEmail: '',
     password: ''
@@ -156,7 +157,7 @@ export default function LoginPage() {
               <div className="text-center">
                 <p className="text-sm text-gray-400 mb-4">Quick Access</p>
                 <motion.a
-                  href="https://t.me/SnipersVerseBot?start=start"
+                  href={TELEGRAM_BOT_URL}
                   className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-bold rounded-full hover:shadow-lg hover:shadow-blue-500/30 transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

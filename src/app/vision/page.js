@@ -31,6 +31,7 @@ function Section({ children }) {
 }
 
 export default function VisionPage() {
+  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
   return (
     <>
       <div className="absolute inset-0 bg-[url('/bg.jpg')] bg-cover bg-center opacity-20 z-[1]"

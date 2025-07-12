@@ -18,7 +18,7 @@ export default function Header() {
   const { user, isAuthenticated, loading } = useSelector((state) => state.auth);
   
   const userMenuRef = useClickOutside(() => setIsUserMenuOpen(false));
-
+  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
   const handleLogout = () => {
     dispatch(logout());
     setIsUserMenuOpen(false);
@@ -123,7 +123,7 @@ export default function Header() {
           )}
 
           <motion.a
-            href="https://t.me/SnipersVerseBot?start=start"
+            href={TELEGRAM_BOT_URL}
             className="px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-sm font-bold shadow-lg hover:shadow-blue-500/30 transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -246,7 +246,7 @@ export default function Header() {
               </div>
 
             <a
-                href="https://t.me/SnipersVerseBot?start=start"
+                href={TELEGRAM_BOT_URL}
                 className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition transform rotate-[0.1deg]"
               >
                 🚀 Launch SnipersVerse Bot

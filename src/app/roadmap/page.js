@@ -5,6 +5,12 @@ import Image from 'next/image'
 import React from 'react'
 
 export default function RoadmapPage() {
+  const [expandedPhase, setExpandedPhase] = useState(0);
+  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
+  const togglePhase = (index) => {
+    setExpandedPhase(expandedPhase === index ? -1 : index);
+  };
+
   return (
     <>
       <div className="absolute inset-0 bg-[url('/bg.jpg')] bg-cover bg-center opacity-20 z-[1]"
