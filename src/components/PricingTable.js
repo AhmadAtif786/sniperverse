@@ -218,8 +218,8 @@ export default function PlanComparisonTable() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap justify-center items-center gap-4 mt-10">
-          <p className="text-gray-400 text-sm mb-0 md:mr-15">
+       <div className="mt-10 flex flex-col md:flex-row justify-center items-center gap-4">
+          <p className="text-gray-400 text-sm text-center mb-2 md:mb-0">
             Cancel anytime. No commitments
           </p>
           <button
@@ -260,7 +260,6 @@ export default function PlanComparisonTable() {
               fontWeight: 600,
               minHeight: '45px',
               background: 'linear-gradient(90deg, #B95DFF 2.27%, #A100FF 97.73%)',
-              marginLeft: '50px',
             }}
           >
             Join Founders Tier

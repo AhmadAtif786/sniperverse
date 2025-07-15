@@ -49,7 +49,7 @@ const Footer = () => {
 
         {/* Bottom text */}
         <p className="mt-4 text-center text-gray-400">
-          &copy; 2024 by FunLauncher. All rights reserved.
+          &copy; 2025 Snipersverse. All rights reserved.
         </p>
       </div>
     </footer>
