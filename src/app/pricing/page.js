@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import { FiCheck, FiChevronDown, FiZap, FiDollarSign, FiGift, FiUsers } from 'react-icons/fi';
 import { useAuth } from '@/hooks/useAuth';
 import Header from '@/components/header';
-import PricingSection from '@/components/PricingCards';
 import PricingCard from '@/components/PricingCards';
 import ComparePlansSection from '@/components/PricingTable';
 import PlanComparisonTable from '@/components/PricingTable';
@@ -27,7 +26,8 @@ export default function PricingPage() {
       return;
     }
     
-    if (planName === 'Free') {
+    if (planName === 'Free Tier') {
+      router.push('/profile');
       return;
     }
     
@@ -44,7 +44,7 @@ export default function PricingPage() {
 
 
         {/* Hero Section */}
-        <section className="text-center px-6 pb-16 relative overflow-hidden ">
+        <section className="text-center px-6 pb-16 relative overflow-hidden z-10">
           {/* 🖼️ Background Image */}
           <h1
             className="text-4xl md:text-6xl mb-4 text-white leading-[1.3] overflow-visible"
@@ -70,11 +70,12 @@ export default function PricingPage() {
           </h1>
         <div className='mt-15'>
           <button
-          style={{minWidth: '279px',fontSize: '16px',fontWeight: '700',minHeight:'50px'}}
-        href="https://t.me/SnipersVerseBot?start=start"
-        className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition"
+              onClick={() => handlePlanSelect("Free Tier", "£0")}
+              style={{ minWidth: '279px', fontSize: '16px', fontWeight: '700', minHeight: '50px' }}
+        className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition cursor-pointer hover:scale-105 relative z-20"
       >
-        🚀 Start Free
+              🚀 Start Free
+              
       </button>
         </div>
         </section>
@@ -87,11 +88,11 @@ export default function PricingPage() {
       
       </div>
     
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto relative z-10">
    
         <PricingCard
           title="Free Tier"
-          subtitle="Solid if you’re just checking it out."
+          subtitle="Solid if you're just checking it out."
           price="£0"
           features={[
             "Manual Sniping",
@@ -103,6 +104,7 @@ export default function PricingPage() {
           ]}
           buttonText="Start Free"
           buttonColor="bg-white hover:bg-white-700"
+          onClick={handlePlanSelect}
         />
 
         <PricingCard
@@ -121,7 +123,7 @@ export default function PricingPage() {
           buttonText="Upgrade to Pro"
           buttonColor="bg-green-500 hover:bg-green-400"
           priceGradient={'linear-gradient(90deg, #15FFDF 2.27%, #00C965 97.73%)'}
-
+          onClick={handlePlanSelect}
         />
 
         <PricingCard
@@ -142,6 +144,7 @@ export default function PricingPage() {
           badge="Most Popular"
           priceGradient={'linear-gradient(90deg, #FFE609 2.27%, #BB8300 97.73%)'
 }
+          onClick={handlePlanSelect}
         />
 
         <PricingCard
@@ -161,6 +164,7 @@ export default function PricingPage() {
           buttonColor="bg-purple-600 hover:bg-purple-500"
           borderColor="border-purple-600"
           priceGradient={'linear-gradient(90deg, #B95DFF 2.27%, #A100FF 97.73%)'}
+          onClick={handlePlanSelect}
         />
       </div>
 <PlanComparisonTable/>
