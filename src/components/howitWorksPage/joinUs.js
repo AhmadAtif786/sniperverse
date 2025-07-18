@@ -28,11 +28,12 @@ export default function ReadySection() {
             </p>
 
             {/* Steps */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              {steps.map((step, i) => (
+            <div className="mt-8  w-full">
+              <div className=" md:flex items-center justify-center space-y-4 space-x-4 px-4">
+                 {steps.map((step, i) => (
                 <div key={step.label} className="flex items-center gap-2">
                   {/* step pill */}
-                  <div className="rounded-lg p-[1px] bg-gradient-to-r from-[#15FFDF4D] to-[#00C9654D]">
+                  <div className="rounded-lg p-[1px] bg-gradient-to-r from-[#15FFDF4D] to-[#00C9654D] min-w-[200]">
                     <div
                       className="bg-[#071225] rounded-lg px-5 py-2.5 flex items-center gap-2 transition hover:shadow-md"
                       style={{ boxShadow: '0px 0px 8px rgba(0,229,255,0.1)' }}
@@ -59,6 +60,7 @@ export default function ReadySection() {
                   )}
                 </div>
               ))}
+            </div>
             </div>
 
             {/* CTA */}

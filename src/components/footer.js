@@ -29,7 +29,7 @@ const Footer = () => {
             <a href="#" className="hover:text-[#00ffad] transition">Home</a>
             <a href="/howItWorks" className="hover:text-[#00ffad] transition">How it works</a>
             <Link href="/faq" className="hover:text-[#00ffad] transition">FAQ</Link>
-            <a href="#" className="hover:text-[#00ffad] transition">Pricing</a>
+            <a href="/pricing" className="hover:text-[#00ffad] transition">Pricing</a>
             <a href="#" className="hover:text-[#00ffad] transition">Community</a>
           </div>
 
