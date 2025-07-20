@@ -91,9 +91,8 @@ export default function PlanComparisonTable() {
                 {plans.map((plan, pi) => (
                   <th
                     key={pi}
-                    className={`p-4 text-center font-semibold text-gray-300 ${
-                      pi === plans.length - 1 ? 'rounded-tr-lg' : ''
-                    }`}
+                    className={`p-4 text-center font-semibold text-gray-300 ${pi === plans.length - 1 ? 'rounded-tr-lg' : ''
+                      }`}
                   >
                     {plan}
                   </th>
@@ -103,7 +102,7 @@ export default function PlanComparisonTable() {
           </table>
 
           {/* Mobile header cards */}
-   
+
 
           <div className="hidden md:table space-y-12">
             {data.map((section, si) => (
@@ -167,66 +166,66 @@ export default function PlanComparisonTable() {
                   </tbody>
                 </table>
 
-              
+
               </div>
             ))}
           </div>
         </div>
-{/* ————— Mobile‑only table ————— */}
-<div className="md:hidden overflow-x-auto mb-6">
-  <table className="min-w-[600px] w-full table-fixed bg-[#0b0f1c] rounded-md">
-    <colgroup>
-      <col className="w-1/3" />
-      <col />
-      <col />
-      <col />
-      <col />
-    </colgroup>
-    <thead>
-      <tr className="bg-[#101627]" style={{ backdropFilter: 'blur(32px)', fontSize: '14px' }}>
-        <th className="p-4 text-left font-semibold text-gray-300">FEATURE</th>
-        {plans.map((plan, pi) => (
-          <th key={pi} className="p-4 text-center font-semibold text-gray-300">
-            {plan.replace(/ .*/, '') /* show just “FREE”, “PRO”, etc. or adjust */}
-          </th>
-        ))}
-      </tr>
-    </thead>
-    <tbody>
-      {data.map((section) => (
-        <React.Fragment key={section.title}>
-          <tr>
-            <td
-              colSpan={5}
-              className="px-4 py-2 font-semibold text-gray-300 bg-[#0b0f1c] text-sm"
-            >
-              {section.title}
-            </td>
-          </tr>
-          {section.features.map((feat) => (
-            <tr key={feat.name} className="hover:bg-[#151a2e]">
-              <td className="p-4 text-sm text-gray-300">{feat.name}</td>
-              {feat.values.map((val, idx) => (
-                <td key={idx} className="p-4 text-center">
-                  <Image
-                    src={val ? '/greencheck.png' : '/maki_cross.png'}
-                    alt={val ? 'Yes' : 'No'}
-                    width={16}
-                    height={16}
-                  />
-                </td>
+        {/* ————— Mobile‑only table ————— */}
+        <div className="md:hidden overflow-x-auto mb-6">
+          <table className="min-w-[600px] w-full table-fixed bg-[#0b0f1c] rounded-md">
+            <colgroup>
+              <col className="w-1/3" />
+              <col />
+              <col />
+              <col />
+              <col />
+            </colgroup>
+            <thead>
+              <tr className="bg-[#101627]" style={{ backdropFilter: 'blur(32px)', fontSize: '14px' }}>
+                <th className="p-4 text-left font-semibold text-gray-300">FEATURE</th>
+                {plans.map((plan, pi) => (
+                  <th key={pi} className="p-4 text-center font-semibold text-gray-300">
+                    {plan.replace(/ .*/, '') /* show just “FREE”, “PRO”, etc. or adjust */}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((section) => (
+                <React.Fragment key={section.title}>
+                  <tr>
+                    <td
+                      colSpan={5}
+                      className="px-4 py-2 font-semibold text-gray-300 bg-[#0b0f1c] text-sm"
+                    >
+                      {section.title}
+                    </td>
+                  </tr>
+                  {section.features.map((feat) => (
+                    <tr key={feat.name} className="hover:bg-[#151a2e]">
+                      <td className="p-4 text-sm text-gray-300">{feat.name}</td>
+                      {feat.values.map((val, idx) => (
+                        <td key={idx} className="p-4 text-center">
+                          <Image
+                            src={val ? '/greencheck.png' : '/maki_cross.png'}
+                            alt={val ? 'Yes' : 'No'}
+                            width={16}
+                            height={16}
+                          />
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </React.Fragment>
               ))}
-            </tr>
-          ))}
-        </React.Fragment>
-      ))}
-    </tbody>
-  </table>
-</div>
-{/* ———————————————————————————————— */}
+            </tbody>
+          </table>
+        </div>
+        {/* ———————————————————————————————— */}
 
         {/* CTA Buttons */}
-       <div className="mt-10 flex flex-col md:flex-row justify-center items-center gap-4">
+        <div className="mt-10 flex flex-col md:flex-row justify-center items-center gap-4">
           <p className="text-gray-400 text-sm text-center mb-2 md:mb-0">
             Cancel anytime. No commitments
           </p>
