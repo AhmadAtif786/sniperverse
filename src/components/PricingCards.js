@@ -12,6 +12,7 @@ export default function PricingCard({
   buttonColor,
   ribbon,
   priceGradient,
+  onClick,
 }) {
   const gradientStyle = priceGradient
     ? {
@@ -25,7 +26,7 @@ export default function PricingCard({
 
   return (
     <div
-      className={`relative flex flex-col justify-between bg-black bg-opacity-50 backdrop-blur-md rounded-md p-8 shadow-xl h-full`}
+      className={`relative flex flex-col justify-between bg-black bg-opacity-50 backdrop-blur-md rounded-md p-8 shadow-xl h-full z-10`}
       style={{
         boxShadow: '0px 14.08px 70.42px 0px #6464640A',
         background: '#FFFFFF12',
@@ -71,7 +72,8 @@ export default function PricingCard({
       {/* CTA */}
       <div className="mt-auto">
         <button
-          className={`w-full py-3 mt-5 rounded-lg font-semibold ${title === 'Founders Tier' ? 'text_white' : 'text-black'} shadow-lg ${buttonColor}`}
+          onClick={() => onClick && onClick(title, price)}
+          className={`w-full py-3 mt-5 rounded-lg font-semibold cursor-pointer transition-all duration-200 hover:scale-105 relative z-20 ${title === 'Founders Tier' ? 'text_white' : 'text-black'} shadow-lg ${buttonColor}`}
         >
           {buttonText}
         </button>

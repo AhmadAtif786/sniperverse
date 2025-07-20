@@ -23,7 +23,6 @@ export default function ProfilePage() {
     }
 
     try {
-      console.log('Chaanign the following telegram handle', telegramHandle);
       const result = await dispatch(editProfile({
         telegram_username: telegramHandle,
         userId: user?.id
@@ -142,6 +141,19 @@ export default function ProfilePage() {
                         )}
                       </div>
                     </div>
+                    {!user?.telegramHandle && !telegramHandle && (
+                      <div className="mt-2 p-3 bg-amber-900/20 border border-amber-500/50 rounded-lg">
+                        <div className="flex items-start gap-2">
+                          <span className="text-amber-400 text-lg">⚠️</span>
+                          <div>
+                            <p className="text-amber-200 text-sm font-medium">Telegram Handle Required</p>
+                            <p className="text-amber-300/80 text-xs mt-1">
+                              Please set your Telegram handle to link your account with your subscription and receive bot notifications.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <div>
                     <label className="block text-sm text-blue-200 mb-1">Member Since</label>
