@@ -117,8 +117,13 @@ export default function JoinSection() {
           Social Proof
         </h2>
         <p className='text-gray-500 text-center mb-8' >
-        Lorem ipsum dolor sit amet consectetur. Velit semper dictumst nibh tristique laoreet facilisis.<br/> Vitae lectus gravida nec enim pharetra sodales nam.
-        </p>
+     Trusted by top degens worldwide. 
+<br/>
+SnipersVerse has sniped over $3.2M+ in volume and 12,000+ tokens with activity surging 40% in just the past week.
+<br/>
+Built for speed. 
+
+Backed by results.</p>
        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
   {metrics.map(({ title, value, image }) => (
    
