@@ -1,8 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import CoreFeatures from '@/components/coreFeature';
@@ -33,55 +31,55 @@ export default function HomePage() {
           {/* Hero Content */}
           <div >
             {/* Headline */}
-          <h1
-  className="text-4xl md:text-6xl mb-4 text-white overflow-visible leading-[1.3]"
-  style={{
-    fontSize: '54px',
-    fontWeight: '400',
-    lineHeight: '1.3',
-    overflow: 'visible',
-  }}
->
-  <span
-    className="bg-clip-text text-transparent italic"
-    style={{
-      backgroundImage: 'linear-gradient(90deg, #15FFDF 2.27%, #00C965 97.73%)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      fontSize: '62px',
-      fontWeight: '700',
-      overflow: 'visible',
-      display: 'inline-block', // prevents text clipping
-       paddingRight: '3px', 
-    }}
-  >
-    Snipe
-  </span>{" "}
-  Live{" "}
-  <span
-    className="bg-clip-text text-transparent italic"
-    style={{
-      backgroundImage: 'linear-gradient(90deg, #15FFDF 2.27%, #00C965 97.73%)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      fontSize: '62px',
-      fontWeight: '700',
-      overflow: 'visible',
-      display: 'inline-block', // prevents text clipping
-       paddingRight: '5px', 
-        textShadow: '0 0 1px rgba(0,0,0,0)', // fake expansion
-    }}
-  >
-    Tokens
-  </span>
-</h1>
+            <h1
+              className="text-4xl md:text-6xl mb-4 text-white overflow-visible leading-[1.3]"
+              style={{
+                fontSize: '54px',
+                fontWeight: '400',
+                lineHeight: '1.3',
+                overflow: 'visible',
+              }}
+            >
+              <span
+                className="bg-clip-text text-transparent italic"
+                style={{
+                  backgroundImage: 'linear-gradient(90deg, #15FFDF 2.27%, #00C965 97.73%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  fontSize: '62px',
+                  fontWeight: '700',
+                  overflow: 'visible',
+                  display: 'inline-block', // prevents text clipping
+                  paddingRight: '3px',
+                }}
+              >
+                Snipe
+              </span>{" "}
+              Live{" "}
+              <span
+                className="bg-clip-text text-transparent italic"
+                style={{
+                  backgroundImage: 'linear-gradient(90deg, #15FFDF 2.27%, #00C965 97.73%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  fontSize: '62px',
+                  fontWeight: '700',
+                  overflow: 'visible',
+                  display: 'inline-block', // prevents text clipping
+                  paddingRight: '5px',
+                  textShadow: '0 0 1px rgba(0,0,0,0)', // fake expansion
+                }}
+              >
+                Tokens
+              </span>
+            </h1>
 
-            <h1 className=" text-white mt-4" style={{fontSize:'54px',fontWeight:'400'}}>
+            <h1 className=" text-white mt-4" style={{ fontSize: '54px', fontWeight: '400' }}>
               Score Faster Than The Crowd
             </h1>
 
             {/* Subtext */}
-            <p className="text-gray-300 mt-5 max-w-xl mx-auto text-base md:text-lg leading-relaxed" style={{fontSize:'20px',fontWeight:'400'}}>
+            <p className="text-gray-300 mt-5 max-w-xl mx-auto text-base md:text-lg leading-relaxed" style={{ fontSize: '20px', fontWeight: '400' }}>
               Solana Sniper Bot With AI Alerts, Manual Execution, XP Rewards, And Evolving Finicons.
             </p>
 
@@ -125,7 +123,7 @@ export default function HomePage() {
 
         <JoinCommunity />
 
-      <Footer />
+        <Footer />
       </main> </>
   );
 }

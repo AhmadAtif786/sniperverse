@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/header";
 import { ReduxProvider } from "@/store/provider";
 import AuthProvider from "@/components/AuthProvider";
 import { ToastContainer } from 'react-toastify';
@@ -17,6 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  icons: {
+    icon: '/faviconI.ico',
+  },
   title: "SniperVerse - AI-Powered NFT Sniper Bot",
   description: "Get faster, smarter, earlier entries with SniperVerse. AI-powered NFT sniper bot with auto-buy engine, rug scoring, and more.",
 };
