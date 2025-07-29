@@ -23,7 +23,7 @@ export default function HomePage() {
 
 
         {/* Hero Section */}
-        <section className="text-center px-6 py-16 relative overflow-hidden ">
+        <section className="text-center px-6 py-2 relative overflow-hidden md:py-16 ">
           {/* 🖼️ Background Image */}
 
 
@@ -89,19 +89,19 @@ export default function HomePage() {
                 href={TELEGRAM_BOT_URL}
                 className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition transform rotate-[0.1deg]"
               >
-                🚀 Launch SnipersVerse Bot
+                🚀 Launch Bot
               </a>
               <a
                 href="/upgrade"
                 className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[#0A0A0A] border border-[#00C965] text-white hover:shadow-md hover:shadow-green-500/20 transition transform rotate-[0.1deg]"
               >
-                🛠️ Upgrade for Auto Access
+                🛠️ To Join Page
               </a>
               <a
                 href="/reserve"
                 className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition transform rotate-[0.1deg]"
               >
-                🐉 Reserve Your Finicons
+                🐉 Sign-up page
               </a>
             </div>
           </div>

@@ -49,6 +49,10 @@ export default function Footer() {
                 <Link href="/join" className="hover:text-[#00ffad] transition">Community
                 </Link>
               </li>
+               <li>
+                <Link href="/vision" className="hover:text-[#00ffad] transition">Vision
+                </Link>
+              </li>
             </ul>
           </div>
 

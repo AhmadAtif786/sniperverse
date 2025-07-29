@@ -94,7 +94,7 @@ export default function VisionPage() {
     {/* Buttons */}
     <div className="mt-6 flex flex-wrap justify-center gap-4">
       <a
-        href="https://t.me/SnipersVerseBot?start=start"
+        href="https://juicebox.money/v4/eth:111?tabid=about"
         className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition"
       >
         🚀 Live on Juicebox

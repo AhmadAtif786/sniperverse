@@ -70,7 +70,7 @@ export default function PricingPage() {
           </h1>
         <div className='mt-15'>
           <button
-              onClick={() => handlePlanSelect("Free Tier", "£0")}
+              onClick={() => handlePlanSelect("Free Tier", "£0.9")}
               style={{ minWidth: '279px', fontSize: '16px', fontWeight: '700', minHeight: '50px' }}
         className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition cursor-pointer hover:scale-105 relative z-20"
       >

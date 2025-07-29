@@ -17,7 +17,7 @@ export default function CoreFeatures() {
         },
         {
             title: "Volume Spike Alerts",
-            desc: "(coming soon)",
+            desc: "Track real-time volume surges",
             icon: "/works/volume-spike.png",
         },
         {

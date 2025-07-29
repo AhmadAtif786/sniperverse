@@ -4,7 +4,7 @@ export default function PricingTiers() {
     const tiers = [
         {
             title: "Free Tier",
-            price: "£0",
+            price: "0.9%",
             period: "",
             features: [
                 "Manual Sniping",
@@ -17,7 +17,7 @@ export default function PricingTiers() {
         },
         {
             title: "Pro",
-            price: "£19.99",
+            price: "0.65%",
             period: "/ month",
             features: [
                 "Auto-Buy Engine",
@@ -32,7 +32,7 @@ export default function PricingTiers() {
         },
         {
             title: "Pro + XP Pack",
-            price: "£29.99",
+            price: "0.45%",
             period: "/ month",
             features: [
                 "All Pro features",
@@ -46,7 +46,7 @@ export default function PricingTiers() {
         },
         {
             title: "Founders Tier",
-            price: "£49.99",
+            price: "0.25%",
             period: "/ month",
             features: [
                 "All Pro+ benefits",

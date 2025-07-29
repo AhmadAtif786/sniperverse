@@ -132,7 +132,7 @@ export default function HomePage() {
         <div className="grid md:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {[
             {
-              title: "Free Tier – £0",
+              title: "Free Tier – £0.9",
               features: [
                 "Manual Sniping",
                 "AI Rug Scoring",

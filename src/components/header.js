@@ -30,16 +30,17 @@ export default function Header() {
     { label: 'Roadmap', href: '/roadmap' },
     { label: 'Pricing', href: '/pricing' },
     { label: 'Join', href: '/join' },
+    { label: 'How it Works', href: '/howItWorks' },
   ];
 
   return (
     <>
-      <header className="flex justify-between items-center px-6 pb-4 border-gray-800 relative z-50  ">
+      <header className="flex justify-between items-center px-6 pb-2 border-gray-800 relative z-50  ">
         <div className="flex items-center space-x-3 mt-2">
           <Link href="/">
             <Image
-              width={148}
-              height={75}
+              width={168}
+              height={85}
               src={sniperlogo}
               alt="SnipersVerse Logo"
               className="rounded-lg border cursor-pointer"
@@ -48,7 +49,7 @@ export default function Header() {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-8 text-sm">
+        <nav className="hidden md:flex space-x-8 text-sm ml-40">
           {navItems.map(({ label, href }, i) => (
             <motion.div key={i} whileHover={{ scale: 1.05 }}>
               <Link
@@ -165,8 +166,8 @@ export default function Header() {
               <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center space-x-3">
                   <Image
-                    width={102}
-                    height={52}
+                    width={135}
+                    height={62}
                     src={sniperlogo}
                     alt="SnipersVerse Logo"
                   />
