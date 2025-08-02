@@ -3,6 +3,7 @@ import { FaTelegramPlane, FaTwitter, FaDiscord, FaMedium } from "react-icons/fa"
 import { BsArrowUpRight } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
+import { FiX } from "react-icons/fi";
 
 export default function VisionJoinUs() {
     return (
@@ -36,7 +37,7 @@ export default function VisionJoinUs() {
 
 
                             <div className="flex flex-wrap gap-4 justify-center">
-                                <a className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#15FFDF] to-[#00C965] text-black rounded-md font-semibold shadow-md hover:opacity-90 transition">
+                                <a href="https://www.t.me/snipersversesniperbot" className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#15FFDF] to-[#00C965] text-black rounded-md font-semibold shadow-md hover:opacity-90 transition">
                                     {/* telegram paper-plane */}
                                     <FaTelegramPlane className="mr-2" />
                                     <span>Join Our Telegram</span>
@@ -103,10 +104,10 @@ export default function VisionJoinUs() {
 
 
                     <div className="flex justify-center gap-4 mt-10 text-xl">
-                        <a href="#" className="hover:text-green-400">
-                            <FaTwitter />
+                        <a href="https://x.com/SnipersVerses" className="hover:text-green-400">
+                            <FiX />
                         </a>
-                        <a href="#" className="hover:text-green-400">
+                        <a href="https://discord.gg/uYFFSDbw" className="hover:text-green-400">
                             <FaDiscord />
                         </a>
                         <a href="#" className="hover:text-green-400">

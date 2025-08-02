@@ -31,7 +31,7 @@ export default function ReadySection() {
             <div className="mt-8  w-full">
               <div className=" md:flex items-center justify-center space-y-4 space-x-4 px-4">
                  {steps.map((step, i) => (
-                <div key={step.label} className="flex items-center gap-2">
+                <div key={step.label} className={`flex items-center gap-2 ${i===2 && 'mb-4'}`}>
                   {/* step pill */}
                   <div className="rounded-lg p-[1px] bg-gradient-to-r from-[#15FFDF4D] to-[#00C9654D] min-w-[200]">
                     <div

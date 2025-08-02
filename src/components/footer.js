@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaTelegramPlane, FaTwitter, FaDiscord } from 'react-icons/fa';
 import sniperlogo from '../../public/logo.png';
+import { FiX } from 'react-icons/fi';
 
 export default function Footer() {
   return (
@@ -14,14 +15,14 @@ export default function Footer() {
           {/* Logo & Tagline */}
           <div className="space-y-4">
             <Link href="/">
-                <Image
-                  src={sniperlogo}
-                  alt="Snipersverse"
-                  width={148}
-                  height={75}
-                  className="rounded-lg"
-                />
-              
+              <Image
+                src={sniperlogo}
+                alt="Snipersverse"
+                width={148}
+                height={75}
+                className="rounded-lg"
+              />
+
             </Link>
           </div>
 
@@ -49,7 +50,7 @@ export default function Footer() {
                 <Link href="/join" className="hover:text-[#00ffad] transition">Community
                 </Link>
               </li>
-               <li>
+              <li>
                 <Link href="/vision" className="hover:text-[#00ffad] transition">Vision
                 </Link>
               </li>
@@ -80,27 +81,27 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-3">Follow Us</h3>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://x.com/SnipersVerses"
                 aria-label="Twitter"
                 className="text-xl hover:text-[#00ffad] transition"
               >
-                <FaTwitter />
-                </a>
-              
+                <FiX />
+              </a>
+
               <a
-                href="#"
+                href="https://www.t.me/snipersversesniperbot"
                 aria-label="Telegram"
                 className="text-xl hover:text-[#00ffad] transition"
               >
                 <FaTelegramPlane />
               </a>
               <a
-                href="#"
+                href="https://discord.gg/uYFFSDbw"
                 aria-label="Discord"
                 className="text-xl hover:text-[#00ffad] transition"
               >
                 <FaDiscord />
-</a>
+              </a>
             </div>
           </div>
         </div>

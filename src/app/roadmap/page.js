@@ -23,7 +23,7 @@ export default function RoadmapPage() {
 
 
         {/* Hero Section */}
-        <section className="text-center px-6 pb-16 relative overflow-hidden ">
+        <section className="text-center px-6 pb-8 relative overflow-hidden ">
           {/* 🖼️ Background Image */}
           <h1
             className="text-4xl md:text-6xl mb-4 text-white leading-[1.3] overflow-visible"
