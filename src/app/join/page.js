@@ -1,12 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { FiCheck, FiChevronDown, FiZap, FiDollarSign, FiGift, FiUsers } from 'react-icons/fi';
 import { useAuth } from '@/hooks/useAuth';
 import Header from '@/components/header';
-import PlanComparisonTable from '@/components/PricingTable';
 import Footer from '@/components/footer';
 import JoinSection from '@/components/joinPage/JoinSection';
 import PricingSection from '@/components/joinPage/Pricing';
@@ -17,7 +14,6 @@ export default function JoinPage() {
   const [activeFaq, setActiveFaq] = useState(null);
   const { isAuthenticated } = useAuth();
   const router = useRouter();
-  const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
   const toggleFaq = (index) => {
     setActiveFaq(activeFaq === index ? null : index);
   };

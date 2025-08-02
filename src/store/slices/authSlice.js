@@ -17,11 +17,161 @@ export const signup = createAsyncThunk(
       const data = await response.json();
 
       if (!response.ok) {
-        return rejectWithValue(data.message || 'Signup failed');
+        return rejectWithValue(data.detail || data.message || 'Signup failed');
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || 'Network error');
+    }
+  }
+);
+
+export const verifyOTP = createAsyncThunk(
+  'auth/verifyOTP',
+  async ({ otp, email, userData }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/verify-otp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ otp, email, userData }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        return rejectWithValue(data.detail || data.message || 'OTP verification failed');
       }
 
       if (data.token) {
         localStorage.setItem('token', data.token);
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || 'Network error');
+    }
+  }
+);
+
+export const resendOTP = createAsyncThunk(
+  'auth/resendOTP',
+  async ({ email, userData }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/resend-otp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, userData }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        return rejectWithValue(data.detail || data.message || 'Failed to resend OTP');
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || 'Network error');
+    }
+  }
+);
+
+export const sendForgotPasswordOTP = createAsyncThunk(
+  'auth/sendForgotPasswordOTP',
+  async ({ email }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/forgot-password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        return rejectWithValue(data.detail || data.message || 'Failed to send reset code');
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || 'Network error');
+    }
+  }
+);
+
+export const verifyForgotPasswordOTP = createAsyncThunk(
+  'auth/verifyForgotPasswordOTP',
+  async ({ otp, email }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/verify-forgot-password-otp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ otp, email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        return rejectWithValue(data.detail || data.message || 'Invalid reset code');
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || 'Network error');
+    }
+  }
+);
+
+export const resetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async ({ email, otp, newPassword }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/reset-password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, otp, newPassword }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        return rejectWithValue(data.detail || data.message || 'Failed to reset password');
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || 'Network error');
+    }
+  }
+);
+
+export const resendForgotPasswordOTP = createAsyncThunk(
+  'auth/resendForgotPasswordOTP',
+  async ({ email }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/resend-forgot-password-otp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        return rejectWithValue(data.detail || data.message || 'Failed to resend reset code');
       }
 
       return data;
@@ -143,6 +293,7 @@ const initialState = {
   isAuthenticated: false,
   loading: false,
   error: null,
+  success: null,
   subscription: {
     plan: null,
     status: null,
@@ -156,6 +307,9 @@ const authSlice = createSlice({
   reducers: {
     clearError: (state) => {
       state.error = null;
+    },
+    clearSuccess: (state) => {
+      state.success = null;
     },
     resetAuth: (state) => {
       state.user = null;
@@ -179,21 +333,8 @@ const authSlice = createSlice({
       })
       .addCase(signup.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = {
-          id: action.payload.id,
-          username: action.payload.username,
-          email: action.payload.email || null,
-          telegramHandle: action.payload.telegram_username || null,
-          createdAt: action.payload.created_at || null,
-        };
-        state.token = action.payload.token;
-        state.subscription = {
-          plan: action.payload.subscription_plan || null,
-          status: action.payload.plan_status || null,
-          expiresAt: action.payload.plan_expires_at || null,
-        };
-        state.isAuthenticated = true;
         state.error = null;
+        state.success = action.payload?.message || 'OTP sent successfully';
       })
       .addCase(signup.rejected, (state, action) => {
         state.loading = false;
@@ -306,9 +447,100 @@ const authSlice = createSlice({
       .addCase(editProfile.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(verifyOTP.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(verifyOTP.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = {
+          id: action.payload.id,
+          username: action.payload.username,
+          email: action.payload.email || null,
+          telegramHandle: action.payload.telegram_username || null,
+          createdAt: action.payload.created_at || null,
+        };
+        state.token = action.payload.token;
+        state.subscription = {
+          plan: action.payload.subscription_plan || null,
+          status: action.payload.plan_status || null,
+          expiresAt: action.payload.plan_expires_at || null,
+        };
+        state.isAuthenticated = true;
+        state.error = null;
+      })
+      .addCase(verifyOTP.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.isAuthenticated = false;
+      })
+      .addCase(resendOTP.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(resendOTP.fulfilled, (state) => {
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(resendOTP.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(sendForgotPasswordOTP.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(sendForgotPasswordOTP.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.success = action.payload?.message || 'Reset code sent successfully';
+      })
+      .addCase(sendForgotPasswordOTP.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(verifyForgotPasswordOTP.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(verifyForgotPasswordOTP.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.success = action.payload?.message || 'Code verified successfully';
+      })
+      .addCase(verifyForgotPasswordOTP.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(resetPassword.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.success = action.payload?.message || 'Password reset successfully';
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(resendForgotPasswordOTP.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(resendForgotPasswordOTP.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.success = action.payload?.message || 'Reset code resent successfully';
+      })
+      .addCase(resendForgotPasswordOTP.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const { clearError, resetAuth } = authSlice.actions;
+export const { clearError, clearSuccess, resetAuth } = authSlice.actions;
 export default authSlice.reducer; 

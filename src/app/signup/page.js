@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { FiMail, FiLock, FiUser, FiEye, FiEyeOff } from 'react-icons/fi';
 import Link from 'next/link';
-import { signup, clearError } from '@/store/slices/authSlice';
+import { signup, clearError, clearSuccess } from '@/store/slices/authSlice';
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -20,17 +20,14 @@ export default function SignupPage() {
 
   const dispatch = useDispatch();
   const router = useRouter();
-  const { loading, error, isAuthenticated } = useSelector((state) => state.auth);
+  const { loading, error, success, isAuthenticated } = useSelector((state) => state.auth);
   const TELEGRAM_BOT_URL = process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL;
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.push('/');
-    }
-  }, [isAuthenticated, router]);
+
 
   useEffect(() => {
     return () => {
       dispatch(clearError());
+      dispatch(clearSuccess());
     };
   }, [dispatch]);
 
@@ -49,7 +46,12 @@ export default function SignupPage() {
     }
 
     const { confirmPassword, ...userData } = formData;
-    dispatch(signup(userData));
+    const result = await dispatch(signup(userData));
+    
+    if (signup.fulfilled.match(result)) {
+      const userDataParam = encodeURIComponent(JSON.stringify(userData));
+      router.push(`/signup/verify-otp?email=${encodeURIComponent(formData.email)}&userData=${userDataParam}`);
+    }
   };
 
   return (
