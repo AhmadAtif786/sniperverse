@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -8,7 +8,7 @@ import { FiMail, FiArrowLeft, FiRefreshCw } from 'react-icons/fi';
 import Link from 'next/link';
 import { verifyOTP, resendOTP, clearError } from '@/store/slices/authSlice';
 
-export default function VerifyOTPPage() {
+function VerifyOTPContent() {
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [resendTimer, setResendTimer] = useState(0);
   const [resendCount, setResendCount] = useState(0);
@@ -206,5 +206,40 @@ export default function VerifyOTPPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <main className="bg-[#0a0a12] text-white font-['Sora'] min-h-screen">
+      <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/grid-pattern.png')] opacity-10 bg-[length:100px_100px] z-0" />
+        <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent z-0" />
+        
+        <div className="relative z-10 w-full max-w-md">
+          <div className="bg-[#0a0a18] border border-blue-900/50 rounded-xl p-8">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <FiMail className="w-8 h-8 text-white" />
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-400">
+                Loading...
+              </h1>
+              <p className="text-blue-200">
+                Please wait while we load the verification page
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+export default function VerifyOTPPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <VerifyOTPContent />
+    </Suspense>
   );
 } 
