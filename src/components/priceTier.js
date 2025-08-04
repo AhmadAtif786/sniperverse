@@ -4,7 +4,7 @@ export default function PricingTiers() {
     const tiers = [
         {
             title: "Free Tier",
-            price: "0.9%",
+            price: "£0",
             period: "",
             features: [
                 "Manual Sniping",
@@ -12,12 +12,13 @@ export default function PricingTiers() {
                 "XP Tracking",
                 "Invite Link",
                 "Basic Snipe Log",
+                "0.9% Fee",
             ],
             button: "Start Free",
         },
         {
             title: "Pro",
-            price: "0.65%",
+            price: "£19.99",
             period: "/ month",
             features: [
                 "Auto-Buy Engine",
@@ -27,12 +28,13 @@ export default function PricingTiers() {
                 "Trait Boost Access",
                 "Invite XP Multiplier",
                 "Auto-Sell (Soon)",
+                "0.65% Fee",
             ],
             button: "Upgrade to Pro",
         },
         {
             title: "Pro + XP Pack",
-            price: "0.45%",
+            price: "£29.99",
             period: "/ month",
             features: [
                 "All Pro features",
@@ -41,12 +43,13 @@ export default function PricingTiers() {
                 "Monthly Trait Reroll",
                 "Early Airdrop Priority",
                 "Trait Crafting (Soon)",
+                "0.45% Fee",
             ],
             button: "Get Pro+ Now",
         },
         {
             title: "Founders Tier",
-            price: "0.25%",
+            price: "£49.99",
             period: "/ month",
             features: [
                 "All Pro+ benefits",
@@ -56,6 +59,7 @@ export default function PricingTiers() {
                 "OG Bot Badge",
                 "Monthly Reroll, Voting Rights",
                 "Merch + Drop Priority",
+                "0.25% Fee",
             ],
             button: "Join Founders Tier",
         },
