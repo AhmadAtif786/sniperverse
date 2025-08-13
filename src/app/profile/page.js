@@ -249,7 +249,7 @@ export default function ProfilePage() {
             >
               <h2 className="text-xl font-bold mb-6">Quick Actions</h2>
               
-              <div className="grid md:grid-cols-3 gap-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <motion.a
                   href={TELEGRAM_BOT_URL}
                   className="p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg text-center font-bold hover:shadow-lg hover:shadow-blue-500/30 transition-all"
@@ -257,6 +257,15 @@ export default function ProfilePage() {
                   whileTap={{ scale: 0.95 }}
                 >
                   ⚡ Launch Bot
+                </motion.a>
+                
+                <motion.a
+                  href="/profile/visual-log"
+                  className="p-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg text-center font-bold hover:shadow-lg hover:shadow-green-500/30 transition-all"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  📊 Visual Log
                 </motion.a>
                 
                 <motion.a

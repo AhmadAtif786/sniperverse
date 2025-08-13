@@ -15,7 +15,7 @@ export const signup = createAsyncThunk(
       });
 
       const data = await response.json();
-
+      
       if (!response.ok) {
         return rejectWithValue(data.detail || data.message || 'Signup failed');
       }
@@ -194,7 +194,6 @@ export const login = createAsyncThunk(
       });
 
       const data = await response.json();
-      console.log(data);
       if (!response.ok) {
         return rejectWithValue(data.detail || 'Login failed');
       }
@@ -287,6 +286,66 @@ export const editProfile = createAsyncThunk(
   }
 );
 
+export const fetchSnipeHistory = createAsyncThunk(
+  'auth/fetchSnipeHistory',
+  async ({ userId, limit = 50, offset = 0 }, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return rejectWithValue('No token found');
+      }
+
+      const response = await fetch(`${API_BASE_URL}/api/v1/user/snipe-history?user_id=${userId}&limit=${limit}&offset=${offset}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('fetchSnipeHistory response:', { status: response.status, data });
+
+      if (!response.ok) {
+        return rejectWithValue(data.message || 'Failed to fetch snipe history');
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || 'Network error');
+    }
+  }
+);
+
+export const fetchSnipeAnalytics = createAsyncThunk(
+  'auth/fetchSnipeAnalytics',
+  async ({ userId }, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return rejectWithValue('No token found');
+      }
+
+      const response = await fetch(`${API_BASE_URL}/api/v1/user/snipe-analytics?user_id=${userId}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('fetchSnipeAnalytics response:', { status: response.status, data });
+
+      if (!response.ok) {
+        return rejectWithValue(data.message || 'Failed to fetch snipe analytics');
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || 'Network error');
+    }
+  }
+);
+
 const initialState = {
   user: null,
   token: null,
@@ -299,6 +358,10 @@ const initialState = {
     status: null,
     expiresAt: null,
   },
+  snipeHistory: [],
+  snipeAnalytics: null,
+  historyLoading: false,
+  analyticsLoading: false,
 };
 
 const authSlice = createSlice({
@@ -537,6 +600,32 @@ const authSlice = createSlice({
       })
       .addCase(resendForgotPasswordOTP.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchSnipeHistory.pending, (state) => {
+        state.historyLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchSnipeHistory.fulfilled, (state, action) => {
+        state.historyLoading = false;
+        state.snipeHistory = action.payload.snipe_history || [];
+        state.error = null;
+      })
+      .addCase(fetchSnipeHistory.rejected, (state, action) => {
+        state.historyLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchSnipeAnalytics.pending, (state) => {
+        state.analyticsLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchSnipeAnalytics.fulfilled, (state, action) => {
+        state.analyticsLoading = false;
+        state.snipeAnalytics = action.payload;
+        state.error = null;
+      })
+      .addCase(fetchSnipeAnalytics.rejected, (state, action) => {
+        state.analyticsLoading = false;
         state.error = action.payload;
       });
   },

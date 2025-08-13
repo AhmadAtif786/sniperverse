@@ -17,6 +17,7 @@ export const useAuth = () => {
     }
   }, [dispatch, initialized]);
 
+
   return {
     user,
     isAuthenticated,
