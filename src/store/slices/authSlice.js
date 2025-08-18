@@ -85,6 +85,7 @@ export const sendForgotPasswordOTP = createAsyncThunk(
   'auth/sendForgotPasswordOTP',
   async ({ email }, { rejectWithValue }) => {
     try {
+      console.log('sendForgotPasswordOTP email:', email);
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/forgot-password`, {
         method: 'POST',
         headers: {
@@ -94,6 +95,7 @@ export const sendForgotPasswordOTP = createAsyncThunk(
       });
 
       const data = await response.json();
+      console.log('sendForgotPasswordOTP response:', { status: response.status, data });
 
       if (!response.ok) {
         return rejectWithValue(data.detail || data.message || 'Failed to send reset code');
