@@ -86,7 +86,6 @@ export const sendForgotPasswordOTP = createAsyncThunk(
   'auth/sendForgotPasswordOTP',
   async ({ email }, { rejectWithValue }) => {
     try {
-      logger.info(`Sending forgot password OTP to email: ${email}`, 'AuthSlice', 'sendForgotPasswordOTP');
 
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/forgot-password`, {
         method: 'POST',
@@ -98,7 +97,6 @@ export const sendForgotPasswordOTP = createAsyncThunk(
 
       const data = await response.json();
       
-      logger.info(`Forgot password OTP response: ${response.status} - ${JSON.stringify(data)}`, 'AuthSlice', 'sendForgotPasswordOTP_response');
 
       if (!response.ok) {
         return rejectWithValue(data.detail || data.message || 'Failed to send reset code');
@@ -106,7 +104,6 @@ export const sendForgotPasswordOTP = createAsyncThunk(
 
       return data;
     } catch (error) {
-      logger.error(`Forgot password OTP error: ${error.message}`, 'AuthSlice', 'sendForgotPasswordOTP_error');
       return rejectWithValue(error.message || 'Network error');
     }
   }
@@ -191,7 +188,8 @@ export const login = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      logger.info(`Logging in with credentials: ${JSON.stringify(credentials)}`, 'AuthSlice', 'login');
+      console.log('Logging in with credentials:', credentials);
+      console.log('API_BASE_URL:', API_BASE_URL);
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/login`, {
         method: 'POST',
         headers: {
@@ -201,7 +199,7 @@ export const login = createAsyncThunk(
       });
 
       const data = await response.json();
-      logger.info(`Login response: ${response.status} - ${JSON.stringify(data)}`, 'AuthSlice', 'login_response');
+      console.log('Login response:', { status: response.status, data });
       if (!response.ok) {
         return rejectWithValue(data.detail || 'Login failed');
       }
@@ -212,7 +210,7 @@ export const login = createAsyncThunk(
 
       return data;
     } catch (error) {
-      logger.error(`Login error: ${error.message}`, 'AuthSlice', 'login_error');
+      console.error('Login error:', error);
       return rejectWithValue(error.message || 'Network error');
     }
   }
