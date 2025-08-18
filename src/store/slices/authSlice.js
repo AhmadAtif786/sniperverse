@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { logger } from '../../utils/logger';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -85,7 +86,8 @@ export const sendForgotPasswordOTP = createAsyncThunk(
   'auth/sendForgotPasswordOTP',
   async ({ email }, { rejectWithValue }) => {
     try {
-      console.log('sendForgotPasswordOTP email:', email);
+      logger.info(`Sending forgot password OTP to email: ${email}`, 'AuthSlice', 'sendForgotPasswordOTP');
+
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/forgot-password`, {
         method: 'POST',
         headers: {
@@ -95,7 +97,8 @@ export const sendForgotPasswordOTP = createAsyncThunk(
       });
 
       const data = await response.json();
-      console.log('sendForgotPasswordOTP response:', { status: response.status, data });
+      
+      logger.info(`Forgot password OTP response: ${response.status} - ${JSON.stringify(data)}`, 'AuthSlice', 'sendForgotPasswordOTP_response');
 
       if (!response.ok) {
         return rejectWithValue(data.detail || data.message || 'Failed to send reset code');
@@ -103,6 +106,7 @@ export const sendForgotPasswordOTP = createAsyncThunk(
 
       return data;
     } catch (error) {
+      logger.error(`Forgot password OTP error: ${error.message}`, 'AuthSlice', 'sendForgotPasswordOTP_error');
       return rejectWithValue(error.message || 'Network error');
     }
   }
