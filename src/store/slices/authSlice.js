@@ -191,6 +191,7 @@ export const login = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
+      logger.info(`Logging in with credentials: ${JSON.stringify(credentials)}`, 'AuthSlice', 'login');
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/login`, {
         method: 'POST',
         headers: {
@@ -200,6 +201,7 @@ export const login = createAsyncThunk(
       });
 
       const data = await response.json();
+      logger.info(`Login response: ${response.status} - ${JSON.stringify(data)}`, 'AuthSlice', 'login_response');
       if (!response.ok) {
         return rejectWithValue(data.detail || 'Login failed');
       }
@@ -210,6 +212,7 @@ export const login = createAsyncThunk(
 
       return data;
     } catch (error) {
+      logger.error(`Login error: ${error.message}`, 'AuthSlice', 'login_error');
       return rejectWithValue(error.message || 'Network error');
     }
   }
