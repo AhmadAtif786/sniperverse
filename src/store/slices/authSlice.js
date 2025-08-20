@@ -188,8 +188,7 @@ export const login = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      console.log('Logging in with credentials:', credentials);
-      console.log('API_BASE_URL:', API_BASE_URL);
+
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/login`, {
         method: 'POST',
         headers: {
@@ -199,7 +198,6 @@ export const login = createAsyncThunk(
       });
 
       const data = await response.json();
-      console.log('Login response:', { status: response.status, data });
       if (!response.ok) {
         return rejectWithValue(data.detail || 'Login failed');
       }
@@ -210,7 +208,6 @@ export const login = createAsyncThunk(
 
       return data;
     } catch (error) {
-      console.error('Login error:', error);
       return rejectWithValue(error.message || 'Network error');
     }
   }
@@ -310,7 +307,6 @@ export const fetchSnipeHistory = createAsyncThunk(
       });
 
       const data = await response.json();
-      console.log('fetchSnipeHistory response:', { status: response.status, data });
 
       if (!response.ok) {
         return rejectWithValue(data.message || 'Failed to fetch snipe history');
@@ -340,7 +336,6 @@ export const fetchSnipeAnalytics = createAsyncThunk(
       });
 
       const data = await response.json();
-      console.log('fetchSnipeAnalytics response:', { status: response.status, data });
 
       if (!response.ok) {
         return rejectWithValue(data.message || 'Failed to fetch snipe analytics');

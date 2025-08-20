@@ -87,19 +87,19 @@ export default function HomePage() {
             <div className="mt-6 flex flex-wrap justify-center gap-4">
               <a
                 href={TELEGRAM_BOT_URL}
-                className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition transform rotate-[0.1deg]"
+                className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition transform rotate-[0.1deg] cursor-pointer z-10"
               >
                 🚀 Launch Bot
               </a>
               <a
-                href="/upgrade"
-                className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[#0A0A0A] border border-[#00C965] text-white hover:shadow-md hover:shadow-green-500/20 transition transform rotate-[0.1deg]"
+                href="/join"
+                className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[#0A0A0A] border border-[#00C965] text-white hover:shadow-md hover:shadow-green-500/20 transition transform rotate-[0.1deg] z-10"
               >
                 🛠️ To Join Page
               </a>
               <a
-                href="/reserve"
-                className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition transform rotate-[0.1deg]"
+                href="/signup"
+                className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition transform rotate-[0.1deg] z-10"
               >
                 🐉 Sign-up page
               </a>

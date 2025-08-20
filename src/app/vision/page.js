@@ -95,16 +95,16 @@ export default function VisionPage() {
     <div className="mt-6 flex flex-wrap justify-center gap-4">
       <a
         href="https://juicebox.money/v4/eth:111?tabid=about"
-        className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition"
+        className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[linear-gradient(90deg,#15FFDF_2.27%,#00C965_97.73%)] text-black shadow-md hover:opacity-90 transition z-10"
       >
         🚀 Live on Juicebox
       </a>
-      <a
-        href="/upgrade"
-        className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[#0A0A0A] border border-[#00C965] text-white hover:shadow-md hover:shadow-green-500/20 transition"
+      <button
+        href={TELEGRAM_BOT_URL}
+        className="px-5 py-2.5 rounded-md font-semibold text-sm bg-[#0A0A0A] border border-[#00C965] text-white hover:shadow-md hover:shadow-green-500/20 transition relative z-10 cursor-pointer"
       >
         🛠️ Join the Bot
-      </a>
+      </button>
     </div>
   </div>
 
